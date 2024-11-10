@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:12:08 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/10 18:47:04 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/10 20:26:10 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int ft_printf(const char *str, ...)
 	va_list p;
 	int count;
 
+	if (!str)
+		return (-1);
 	count = 0;
 	va_start(p, str);
 	while (*str)
@@ -44,12 +46,16 @@ int ft_printf(const char *str, ...)
 			count += write (1, str, 1);
 		str++;
 	}
+	// Clean up both va_lists
+	//va_end(args_copy);
+    va_end(p);
 	return (count);
 }
 int main ()
 {
-	char c[] = "hhhi";
+	char *c = NULL;
 	int a = 332;
-	ft_printf("%s hello  %d world!\n",c , a);
-	printf("%d\n",ft_printf("%% hello  world!\n"));
+	//printf("%d\n",printf(NULL));
+	//ft_printf("%s hello  %d world!\n",c , a);
+	printf("%d \n",printf("%s",a));
 }
