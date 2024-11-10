@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:44:19 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/08 15:11:30 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:40:51 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,17 @@ static char    check_and_write(unsigned long long int n)
         return 0;
 }
 
-void    ft_void_hexadecimal(unsigned long long int ptr)
+int    ft_void_hexadecimal(unsigned long long int ptr)
 {
     char    s;
+    int count;
 
+    count = 0;
     if (ptr > 15)
         ft_void_hexadecimal(ptr / 16);
     s = check_and_write(ptr % 16);
-    write (1, &s, 1);
+    count += write (1, &s, 1);
+    return (count);
 }
 
 // int main ()

@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:12:08 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/09 20:24:40 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:47:04 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,41 @@
 
 int ft_printf(const char *str, ...)
 {
-    va_list p;
+	va_list p;
+	int count;
 
-    va_start(p, str);
-    while (*str)
-    {
-        if (*str != '%')
-            ft_putchar(*str);
-        if (*str == '%' && *(++str) == '%')
-            write (1,"%",1);
-        if (*str == '%' && *(++str) == 'c')
-            ft_putchar(va_arg(p, char));
-        if (*str == '%' && *(++str) == 's')
-            ft_putstr(va_arg(p, char *));
-        if (*str == '%' && (*(++str) == 'd' || *(++str) == 'i'))
-            ft_putnbr(va_arg(p, int));
-        if (*str == '%' && *(++str) == 'x')
-            
-        
-    }
+	count = 0;
+	va_start(p, str);
+	while (*str)
+	{
+		if (*str == '%')
+		{
+			str++;
+			if (*str == '%')
+				count += write(1,"%", 1);
+			else if (*str == 'c')
+				count += ft_putchar(va_arg(p, int));
+			else if (*str == 's')
+				count += ft_putstr(va_arg(p, char *));
+			else if (*str == 'd' || *str == 'i')
+				count += ft_putnbr(va_arg(p, int));
+			else if (*str == 'x')
+				count += ft_putnbr_baze_16(va_arg(p, int), 'x');
+			else if (*str == 'X')
+				count += ft_putnbr_baze_16(va_arg(p, int), 'X');
+			else if (*str == 'p')
+				count += ft_void_hexadecimal((unsigned long long int)va_arg(p, void *));
+		}
+		else
+			count += write (1, str, 1);
+		str++;
+	}
+	return (count);
 }
 int main ()
 {
-    ft_printf(" hello world!\n");
+	char c[] = "hhhi";
+	int a = 332;
+	ft_printf("%s hello  %d world!\n",c , a);
+	printf("%d\n",ft_printf("%% hello  world!\n"));
 }

@@ -6,13 +6,14 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:27 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/07 14:53:29 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:43:28 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void ft_putchar(char c)
+int ft_putchar(char c)
 {
     write (1, &c, 1);
+    return (1);
 }

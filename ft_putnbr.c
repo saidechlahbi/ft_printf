@@ -6,20 +6,22 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:01:19 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/07 14:07:48 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:45:11 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void    ft_putnbr(int n)
+int    ft_putnbr(int n)
 {
     char    c;
+    int count;
 
+    count = 0;
     if (n == -2147483648)
     {
         write (1, "-2147483648", 11);
-        return ;
+        return(11);
     }
     if (n < 0)
     {
@@ -29,5 +31,6 @@ void    ft_putnbr(int n)
     if (n > 9)
         ft_putnbr(n / 10);
     c = (n % 10) + '0';
-    write (1, &c, 1);
+    count += write (1, &c, 1);
+    return (count);
 }

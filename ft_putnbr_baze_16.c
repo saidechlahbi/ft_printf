@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:18:19 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/08 14:26:00 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:38:15 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,17 @@ static char    check_and_write(unsigned int n, char c)
             return 0;
     }
 }
-void    ft_putnbr_baze_16(unsigned int n, char c)
+int    ft_putnbr_baze_16(unsigned int n, char c)
 {
+    int count;
     char    s;
 
+    count = 0;
     if (n > 15)
         ft_putnbr_baze_16(n / 16, c);
     s = check_and_write(n % 16, c);
-    write (1, &s, 1);
+    count += write (1, &s, 1);
+    return (count);
 }
 
 // int main ()
