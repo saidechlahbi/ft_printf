@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:12:08 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/10 20:26:10 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:32:21 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int ft_printf(const char *str, ...)
 			else if (*str == 'X')
 				count += ft_putnbr_baze_16(va_arg(p, int), 'X');
 			else if (*str == 'p')
-				count += ft_void_hexadecimal((unsigned long long int)va_arg(p, void *));
+				count += ft_void_hexadecimal((intptr_t)va_arg(p, void *));
 		}
 		else
 			count += write (1, str, 1);

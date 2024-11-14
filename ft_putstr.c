@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:57:04 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/10 18:33:56 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:42:05 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,10 @@ int    ft_putstr(char *str)
     }
     return (count);
 }
+
+// int main ()
+// {
+//     int i = ft_putstr("");
+//     //int i = printf("yhfdjshiwehf");
+//     printf("%d\n",i);
+// }

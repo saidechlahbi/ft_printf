@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:27 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/10 18:43:28 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:23:07 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int ft_putchar(char c)
 {
-    write (1, &c, 1);
-    return (1);
+	write (1, &c, 1);
+	return (1);
 }

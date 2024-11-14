@@ -6,43 +6,25 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:44:19 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/10 18:40:51 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:36:03 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static char    check_and_write(unsigned long long int n)
+int    ft_void_hexadecimal(intptr_t	ptr)
 {
-    if (n >= 0 && n <= 9)
-        return (n + '0');
-    if (n == 15)
-        return 'f';
-    else if (n == 14)
-        return 'e';
-    else if (n == 13)
-        return 'd';
-    else if (n == 12)
-        return 'c';
-    else if (n == 11)
-        return 'b';
-    else if (n == 10)
-        return 'a';
-    else
-        return 0;
-}
+	char    s;
+	char    *base1;
+	int		count;
 
-int    ft_void_hexadecimal(unsigned long long int ptr)
-{
-    char    s;
-    int count;
-
-    count = 0;
-    if (ptr > 15)
-        ft_void_hexadecimal(ptr / 16);
-    s = check_and_write(ptr % 16);
-    count += write (1, &s, 1);
-    return (count);
+	count = 0;
+	base1 = "0123456789abcdef";
+	if (ptr > 15)
+		count += ft_void_hexadecimal(ptr / 16);
+	s = base1[ptr % 16];
+	count += ft_putchar(s);
+	return (count);
 }
 
 // int main ()
@@ -51,8 +33,8 @@ int    ft_void_hexadecimal(unsigned long long int ptr)
 //     float *s;
 //     s = &a;
 //     write (1, "0x", 2);
-//     ft_void_hexadecimal((unsigned long long int)s);
-//     printf("\n");
+//    int i =  ft_void_hexadecimal((intptr_t)s);
+//     printf("\n%d\n",i);
 //     printf("%p\n",s);
-    
+	
 // }

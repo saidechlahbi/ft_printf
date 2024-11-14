@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:01:19 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/10 18:45:11 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:34:09 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,18 @@ int    ft_putnbr(int n)
     }
     if (n < 0)
     {
-        write (1, "-", 1);
+        count += write (1, "-", 1);
         n = -n;
     }
     if (n > 9)
-        ft_putnbr(n / 10);
+        count += ft_putnbr(n / 10);
     c = (n % 10) + '0';
-    count += write (1, &c, 1);
+    count += ft_putchar(c);
     return (count);
 }
+
+// int main ()
+// {
+//     int i = ft_putnbr(-54321);
+//     printf("\n%d\n",i);
+// }

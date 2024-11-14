@@ -6,67 +6,35 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:18:19 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/10 18:38:15 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:23:03 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-
-static char    check_and_write(unsigned int n, char c)
-{
-    if (n >= 0 && n <= 9)
-        return (n + '0');
-    else if (c == 'x')
-    {
-        if (n == 15)
-            return 'f';
-        else if (n == 14)
-            return 'e';
-        else if (n == 13)
-            return 'd';
-        else if (n == 12)
-            return 'c';
-        else if (n == 11)
-            return 'b';
-        else if (n == 10)
-            return 'a';
-        else
-            return 0;
-    }
-    else if (c == 'X')
-    {
-        if (n == 15)
-            return 'F';
-        else if (n == 14)
-            return 'E';
-        else if (n == 13)
-            return 'D';
-        else if (n == 12)
-            return 'C';
-        else if (n == 11)
-            return 'B';
-        else if (n == 10)
-            return 'A';
-        else
-            return 0;
-    }
-}
 int    ft_putnbr_baze_16(unsigned int n, char c)
 {
-    int count;
-    char    s;
+	int count;
+	char    *base1;
+	char    *base2;
+	char    s;
 
-    count = 0;
-    if (n > 15)
-        ft_putnbr_baze_16(n / 16, c);
-    s = check_and_write(n % 16, c);
-    count += write (1, &s, 1);
-    return (count);
+	base1 = "0123456789abcdef";
+	base2 = "0123456789ABCDEF";
+	count = 0;
+	if (n > 15)
+		count += ft_putnbr_baze_16(n / 16, c);
+	if (c == 'x')
+		s = base1[n % 16];
+	else
+		s = base2[n % 16];
+	count += ft_putchar(s);
+	return (count);
 }
 
 // int main ()
 // {
-//     ft_putnbr_baze_16(-10, 'x');
-//     printf("\n");
+//    int i = ft_putnbr_baze_16(0, 'x');
+//     printf("\n %d \n",i);
+//     printf("%x\n",0);
 // }
