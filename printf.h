@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:53:29 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/14 17:34:04 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:03:51 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdarg.h>
 
 int    ft_putchar(char c);
 int    ft_putnbr(int n);

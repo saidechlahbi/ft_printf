@@ -45,3 +45,11 @@ Check write() return values
 Handle buffer overflow situations in helper functions
 
 These checks make your printf implementation more robust and safer to use.
+
+
+
+
+## if after % is deferent to cspdiuxX% -1  is returned
+
+## if str is NULL -1 is returned
+
