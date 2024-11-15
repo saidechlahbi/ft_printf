@@ -12,10 +12,10 @@
 
 #include "printf.h"
 
-int    ft_putnbr_unsigned(unsigned int n)
+int	ft_putnbr_unsigned(unsigned int n)
 {
-	char    c;
-	int count;
+	char	c;
+	int		count;
 
 	count = 0;
 	if (n > 9)

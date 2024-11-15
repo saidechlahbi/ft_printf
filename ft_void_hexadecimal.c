@@ -6,16 +6,16 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:44:19 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/14 17:36:03 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/15 22:13:05 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int    ft_void_hexadecimal(intptr_t	ptr)
+int	ft_void_hexadecimal(intptr_t ptr)
 {
-	char    s;
-	char    *base1;
+	char	s;
+	char	*base1;
 	int		count;
 
 	count = 0;
@@ -36,5 +36,5 @@ int    ft_void_hexadecimal(intptr_t	ptr)
 //    int i =  ft_void_hexadecimal((intptr_t)s);
 //     printf("\n%d\n",i);
 //     printf("%p\n",s);
-	
+
 // }

@@ -46,10 +46,22 @@ Handle buffer overflow situations in helper functions
 
 These checks make your printf implementation more robust and safer to use.
 
+ft_void_hexadecimal.c:15:8: error: conflicting types for ‘ft_void_hexadecimal’; have ‘int(intptr_t)’ {aka ‘int(long int)’}
+   15 | int    ft_void_hexadecimal(intptr_t     ptr)
+      |        ^~~~~~~~~~~~~~~~~~~
+In file included from ft_void_hexadecimal.c:13:
+printf.h:27:8: note: previous declaration of ‘ft_void_hexadecimal’ with type ‘int(uintptr_t)’ {aka ‘int(long unsigned int)’}
+   27 | int    ft_void_hexadecimal(uintptr_t p);
+      |        ^~~~~~~~~~~~~~~~~~~
+make: *** [<builtin>: ft_void_hexadecimal.o] Error 1
 
 
 
-## if after % is deferent to cspdiuxX% -1  is returned
+## if after % is deferent to cspdiuxX% ,-1  is returned
 
-## if str is NULL -1 is returned
+## if str is NULL ,-1 is returned
+
+## if the argument of %p is null ,(nil) is returned 
+
+## if the argument of %s is null, (null) is returned
 

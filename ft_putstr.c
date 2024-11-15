@@ -6,23 +6,25 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:57:04 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/14 16:42:05 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/15 22:13:01 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int    ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
-    int count;
+	int	count;
 
-    count = 0;
-    while (*str)
-    {
-        count += write(1, str, 1);
-        str++;
-    }
-    return (count);
+	count = 0;
+	if (!str)
+		return (ft_putstr("(null)"));
+	while (*str)
+	{
+		count += write(1, str, 1);
+		str++;
+	}
+	return (count);
 }
 
 // int main ()

@@ -12,12 +12,12 @@
 
 #include "printf.h"
 
-int    ft_putnbr_baze_16(unsigned int n, char c)
+int	ft_putnbr_baze_16(unsigned int n, char c)
 {
-	int count;
-	char    *base1;
-	char    *base2;
-	char    s;
+	int		count;
+	char	*base1;
+	char	*base2;
+	char	s;
 
 	base1 = "0123456789abcdef";
 	base2 = "0123456789ABCDEF";
