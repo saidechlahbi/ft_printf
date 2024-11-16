@@ -6,13 +6,13 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:12:08 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/15 22:22:58 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/16 16:37:57 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-int	ft_check_and_call(const char *str, va_list p)
+static int	ft_check_and_call(const char *str, va_list p)
 {
 	void	*s;
 
@@ -67,6 +67,13 @@ int	ft_printf(const char *str, ...)
 	return (count);
 }
 
+int main ()
+{
+	int i = ft_printf("%s\n", "said 1");
+	ft_printf("%d\n", i);
+	int j = printf("%s\n", "said 1");
+	printf("%d\n", j);
+}
 // int main ()
 // {
 // // char *c = NULL;
@@ -104,7 +111,7 @@ int	ft_printf(const char *str, ...)
 // printf("Returned count: %d, Expected count: %d\n\n", count, c);
 // count = ft_printf("Hex (lower): %x\n", 255);
 // c = printf("Hex (lower): %x\n", 255);
-// printf("Returned count: %d, Expected count: %d\n\n", count, c)
+// printf("Returned count: %d, Expected count: %d\n\n", count, c);
 // count = ft_printf("Hex (upper): %X\n", 255);
 // c = printf("Hex (upper): %X\n", 255);
 // printf("Returned count: %d, Expected count: %d\n\n", count, c);
@@ -112,9 +119,9 @@ int	ft_printf(const char *str, ...)
 // c = printf("Percent: %%\n");
 // printf("Returned count: %d, Expected count: %d\n\n", count, c);
 // count = ft_printf("first name: %s, second name %s\n", "loukmane",
-//"serghini");
+// "serghini");
 // c = printf("first name: %s, second name %s\n", "loukmane",
-//		"serghini");
+// 		"serghini");
 // printf("Returned count: %d, Expected count: %d\n\n", count, c);
 // count = ft_printf("unisgned decimal: %u\n", 4294967295);
 // c = printf("unisgned decimal: %u\n", 4294967295);
@@ -133,6 +140,12 @@ int	ft_printf(const char *str, ...)
 // printf("Returned count: %d, Expected count: %d\n\n", count, c);
 // count = ft_printf("str :%s\n", NULL);
 // c = printf("str :%s\n", NULL);
+// printf("Returned count: %d, Expected count: %d\n\n", count, c);
+// printf("//////////////////////////////////// \n");
+
+// count = ft_printf("kjdgsfv % kdkfjgvs \n");
+// printf(" \n //////////////////////////////////// \n");
+// c = printf("kjdgsfv % kdkfjgvs\n");
 // printf("Returned count: %d, Expected count: %d\n\n", count, c);
 // return (0);
 // }

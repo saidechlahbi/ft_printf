@@ -6,11 +6,11 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:01:19 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/15 22:12:57 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/16 16:12:04 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_putnbr(int n)
 {

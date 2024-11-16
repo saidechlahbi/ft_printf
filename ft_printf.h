@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 14:29:48 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/16 16:12:00 by sechlahb         ###   ########.fr       */
+/*   Created: 2024/11/07 13:53:29 by sechlahb          #+#    #+#             */
+/*   Updated: 2024/11/16 16:16:03 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_putnbr_unsigned(unsigned int n)
-{
-	char	c;
-	int		count;
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <stdarg.h>
+# include <stdint.h>
 
-	count = 0;
-	if (n > 9)
-		count += ft_putnbr_unsigned(n / 10);
-	c = (n % 10) + '0';
-	count += ft_putchar(c);
-	return (count);
-}
+int		ft_putchar(char c);
+int		ft_putnbr(int n);
+int		ft_putstr(char *str);
+int		ft_putnbr_baze_16(unsigned int n, char c);
+int		ft_putnbr_unsigned(unsigned int n);
+int		ft_void_hexadecimal(intptr_t ptr);
 
-// int main ()
-// {
-// 	int i = ft_putnbr_unsigned(-5467890);
-// 	printf ("\n %u \n",-5467890);
-// 	printf("\n%d\n",i);
-// }
+#endif

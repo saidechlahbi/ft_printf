@@ -65,3 +65,6 @@ make: *** [<builtin>: ft_void_hexadecimal.o] Error 1
 
 ## if the argument of %s is null, (null) is returned
 
+
+The fixed parameter helps va_start() know where the variable arguments begin in memory
+Without a fixed parameter, there would be no way to reliably determine how many arguments were passed
