@@ -2,8 +2,8 @@
 
 
 typedef struct {
-    unsigned int gp_offset;
-    unsigned int fp_offset;
+    unsigned int gp_offset; 48
+    unsigned int fp_offset; 176
     void *overflow_arg_area;
     void *reg_save_area;
 } va_list[1];
@@ -68,3 +68,49 @@ make: *** [<builtin>: ft_void_hexadecimal.o] Error 1
 
 The fixed parameter helps va_start() know where the variable arguments begin in memory
 Without a fixed parameter, there would be no way to reliably determine how many arguments were passed
+
+
+
+Stack
+   +----------------------------------+
+   |         main() function        |
+   +----------------------------------+
+   |          min() function        |
+   +----------------------------------+
+   |       va_list struct p         |
+   |   - gp_offset: 8 (1 arg used)  |
+   |   - fp_offset: 48 (0 args used)|
+   |   - overflow_arg_area: pointer |
+   |   - reg_save_area: pointer     |
+   +----------------------------------+
+   |         int count = 11         |
+   +----------------------------------+
+   |         int i (loop var)       |
+   +----------------------------------+
+   |         int s = 0 (sum)        |
+   +----------------------------------+
+                  Heap
+   +----------------------------------+
+   |                                |
+   |       (no memory allocated)    |
+   |                                |
+   +----------------------------------+
+
+
+
+
+   The va_list struct that the p pointer points to has the following definition:
+cCopystruct __va_list_tag {
+    unsigned int gp_offset;
+    unsigned int fp_offset;
+    void *overflow_arg_area;
+    void *reg_save_area;
+};
+The key members of this struct are:
+
+gp_offset: Tracks how many general-purpose registers have been used to pass arguments
+fp_offset: Tracks how many floating-point registers have been used to pass arguments
+overflow_arg_area: Pointer to where additional arguments are stored on the stack
+reg_save_area: Pointer to where register contents are saved
+
+This allows the va_start, va_arg, and va_end macros to correctly iterate through the variable arguments, retrieving each one based on its type and position in the argument list.
