@@ -6,16 +6,16 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:12:08 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/16 16:37:57 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/23 20:30:33 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_check_and_call(const char *str, va_list p)
-{
-	void	*s;
 
+
+static int	ft_check_and_call(const char *str, va_list p, int *check)
+{
 	if (*str == '%')
 		return (ft_putchar('%'));
 	else if (*str == 'c')
@@ -23,18 +23,22 @@ static int	ft_check_and_call(const char *str, va_list p)
 	else if (*str == 's')
 		return (ft_putstr(va_arg(p, char *)));
 	else if (*str == 'd' || *str == 'i')
-		return (ft_putnbr(va_arg(p, int)));
+	{
+		if (*check == 1)
+			return(ft_putchar(' ') + ft_putnbr(va_arg(p, int)));
+		else
+			return (ft_putnbr(va_arg(p, int)));
+	}
 	else if (*str == 'u')
 		return (ft_putnbr_unsigned(va_arg(p, int)));
 	else if ((*str == 'x') || (*str == 'X'))
 		return (ft_putnbr_baze_16(va_arg(p, int), *str));
 	else if (*str == 'p')
 	{
-		s = va_arg(p, void *);
-		if (!s)
-			return (ft_putstr("(nil)"));
+		if (*check == 1)
+			return (ft_putchar(' ') + ft_void_hexadecimal((intptr_t)va_arg(p, void *)));
 		else
-			return (ft_putstr("0x") + ft_void_hexadecimal((intptr_t)s));
+			return ( ft_void_hexadecimal((intptr_t)va_arg(p, void *)));
 	}
 	return (-1);
 }
@@ -44,17 +48,26 @@ int	ft_printf(const char *str, ...)
 	va_list	p;
 	int		count;
 	int		a;
+	int check;
 
 	if (!str)
 		return (-1);
 	count = 0;
+	check = 0;
 	va_start(p, str);
 	while (*str)
 	{
 		if (*str == '%')
 		{
-			str++;
-			a = ft_check_and_call(str, p);
+			++str;
+			if (*str == ' ' || *str == '\t')
+			{
+				while (*str && (*str == ' ' || *str == '\t'))
+					str++;
+				check = 1;	
+			}
+			a = ft_check_and_call(str, p, &check);
+			check = 0;
 			if (a == -1)
 				return (-1);
 			count += a;
@@ -66,14 +79,42 @@ int	ft_printf(const char *str, ...)
 	va_end(p);
 	return (count);
 }
-
-int main ()
+int main () 
 {
-	int i = ft_printf("%s\n", "said 1");
-	ft_printf("%d\n", i);
-	int j = printf("%s\n", "said 1");
-	printf("%d\n", j);
+    int i = ft_printf("%			 p\n", 6);
+    ft_printf("%d\n", i);
+
+printf("hhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhh \n");
+    int j = printf("%			 p\n", 6);
+    printf("%d\n", j);
+
+	//     int j = printf("%           c\n",48);
+    // printf("%d\n", j);
+	//      j = printf("%           s\n","rww");
+    // printf("%d\n", j);
+	//      j = printf("%           x\n",2);
+    // printf("%d\n", j);
+	//      j = printf("%           X\n",2);
+    // printf("%d\n", j);
+	//      j = printf("%           d\n",2);
+    // printf("%d\n", j);
+	// 	     j = printf("%           i\n",2);
+    // printf("%d\n", j);
+	//      j = printf("%           %\n",2);
+    // printf("%d\n", j);
+
+	//      j = printf("%           p\n",2);
+    // printf("%d\n", j);
+
+	
 }
+// int main ()
+// {
+// 	int i = ft_printf("%s\n", "said 1");
+// 	ft_printf("%d\n", i);
+// 	int j = printf("%s\n", "said 1");
+// 	printf("%d\n", j);
+// }
 // int main ()
 // {
 // // char *c = NULL;
