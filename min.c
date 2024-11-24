@@ -3,6 +3,6 @@
 
 int main () 
 { 
-    int i = printf("%                     d               \n",2);
+    int i = printf("%        #      d\n",2);
     printf("%d\n", i);
 }

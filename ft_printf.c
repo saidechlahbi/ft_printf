@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:12:08 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/23 20:30:33 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:38:31 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 
 
-static int	ft_check_and_call(const char *str, va_list p, int *check)
+static int	ft_check_and_call(const char *str, va_list p, char *check)
 {
 	if (*str == '%')
 		return (ft_putchar('%'));
 	else if (*str == 'c')
-		return (ft_putchar(va_arg(p, int)));
+		return (ft_putchar(va_arg(p, ))int);
 	else if (*str == 's')
 		return (ft_putstr(va_arg(p, char *)));
 	else if (*str == 'd' || *str == 'i')
 	{
-		if (*check == 1)
-			return(ft_putchar(' ') + ft_putnbr(va_arg(p, int)));
+		if (*check != 1)
+			return(ft_putstr(check) + ft_putnbr(va_arg(p, int)));
 		else
 			return (ft_putnbr(va_arg(p, int)));
 	}
@@ -35,12 +35,42 @@ static int	ft_check_and_call(const char *str, va_list p, int *check)
 		return (ft_putnbr_baze_16(va_arg(p, int), *str));
 	else if (*str == 'p')
 	{
-		if (*check == 1)
-			return (ft_putchar(' ') + ft_void_hexadecimal((intptr_t)va_arg(p, void *)));
+		if (*check != 0)
+			return (ft_putstr(check) + ft_void_hexadecimal((intptr_t)va_arg(p, void *)));
 		else
 			return ( ft_void_hexadecimal((intptr_t)va_arg(p, void *)));
 	}
 	return (-1);
+}
+
+int	check_flags(const char *str, char *c)
+{
+	int i;
+	char	space;
+	char	hachtag;
+	char	plus;
+
+	space = 0;
+	hachtag = 0;
+	plus = 0;
+	i = 0;
+	while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '+' || str[i] == '#'))
+	{
+		if (str[i] == '+')
+			plus = '+';
+		else if (str[i] == ' ' || str[i] == '\t')
+			space = ' ';
+		else
+			hachtag = '#';
+		i++;
+	}
+	if (plus != 0)
+		*c = '+';
+	else if (plus == 0 && space == 0 && hachtag != 0)
+		*c = '#';
+	else
+		*c = ' ';
+	return (i);
 }
 
 int	ft_printf(const char *str, ...)
@@ -48,26 +78,24 @@ int	ft_printf(const char *str, ...)
 	va_list	p;
 	int		count;
 	int		a;
-	int check;
+	char c;
 
 	if (!str)
 		return (-1);
 	count = 0;
-	check = 0;
+	c = 0;
+	a = 0;
 	va_start(p, str);
 	while (*str)
 	{
 		if (*str == '%')
 		{
 			++str;
-			if (*str == ' ' || *str == '\t')
-			{
-				while (*str && (*str == ' ' || *str == '\t'))
-					str++;
-				check = 1;	
-			}
-			a = ft_check_and_call(str, p, &check);
-			check = 0;
+			if (*str == ' ' || *str == '\t' || *str == '+' || *str == '3')
+				a = check_flags(str, &c);
+			//str + a;
+			a = ft_check_and_call(str + a, p, &c);
+			c = 0;
 			if (a == -1)
 				return (-1);
 			count += a;
@@ -81,7 +109,7 @@ int	ft_printf(const char *str, ...)
 }
 int main () 
 {
-    int i = ft_printf("%			 p\n", 6);
+    int i = ft_printf("%		#	 p\n", 6);
     ft_printf("%d\n", i);
 
 printf("hhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhh \n");
