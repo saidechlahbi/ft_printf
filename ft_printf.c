@@ -6,71 +6,37 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:12:08 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/24 16:38:31 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/12/08 13:47:06 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-
-static int	ft_check_and_call(const char *str, va_list p, char *check)
+static int	ft_check_and_call(const char *str, va_list p)
 {
+	void	*s;
+
 	if (*str == '%')
 		return (ft_putchar('%'));
 	else if (*str == 'c')
-		return (ft_putchar(va_arg(p, ))int);
+		return (ft_putchar(va_arg(p, int)));
 	else if (*str == 's')
 		return (ft_putstr(va_arg(p, char *)));
 	else if (*str == 'd' || *str == 'i')
-	{
-		if (*check != 1)
-			return(ft_putstr(check) + ft_putnbr(va_arg(p, int)));
-		else
-			return (ft_putnbr(va_arg(p, int)));
-	}
+		return (ft_putnbr(va_arg(p, int)));
 	else if (*str == 'u')
 		return (ft_putnbr_unsigned(va_arg(p, int)));
 	else if ((*str == 'x') || (*str == 'X'))
 		return (ft_putnbr_baze_16(va_arg(p, int), *str));
 	else if (*str == 'p')
 	{
-		if (*check != 0)
-			return (ft_putstr(check) + ft_void_hexadecimal((intptr_t)va_arg(p, void *)));
+		s = va_arg(p, void *);
+		if (!s)
+			return (ft_putstr("(nil)"));
 		else
-			return ( ft_void_hexadecimal((intptr_t)va_arg(p, void *)));
+			return (ft_putstr("0x") + ft_void_hexadecimal((intptr_t)s));
 	}
 	return (-1);
-}
-
-int	check_flags(const char *str, char *c)
-{
-	int i;
-	char	space;
-	char	hachtag;
-	char	plus;
-
-	space = 0;
-	hachtag = 0;
-	plus = 0;
-	i = 0;
-	while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '+' || str[i] == '#'))
-	{
-		if (str[i] == '+')
-			plus = '+';
-		else if (str[i] == ' ' || str[i] == '\t')
-			space = ' ';
-		else
-			hachtag = '#';
-		i++;
-	}
-	if (plus != 0)
-		*c = '+';
-	else if (plus == 0 && space == 0 && hachtag != 0)
-		*c = '#';
-	else
-		*c = ' ';
-	return (i);
 }
 
 int	ft_printf(const char *str, ...)
@@ -78,24 +44,17 @@ int	ft_printf(const char *str, ...)
 	va_list	p;
 	int		count;
 	int		a;
-	char c;
 
 	if (!str)
 		return (-1);
 	count = 0;
-	c = 0;
-	a = 0;
 	va_start(p, str);
 	while (*str)
 	{
 		if (*str == '%')
 		{
-			++str;
-			if (*str == ' ' || *str == '\t' || *str == '+' || *str == '3')
-				a = check_flags(str, &c);
-			//str + a;
-			a = ft_check_and_call(str + a, p, &c);
-			c = 0;
+			str++;
+			a = ft_check_and_call(str, p);
 			if (a == -1)
 				return (-1);
 			count += a;
@@ -107,35 +66,7 @@ int	ft_printf(const char *str, ...)
 	va_end(p);
 	return (count);
 }
-int main () 
-{
-    int i = ft_printf("%		#	 p\n", 6);
-    ft_printf("%d\n", i);
 
-printf("hhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhh \n");
-    int j = printf("%			 p\n", 6);
-    printf("%d\n", j);
-
-	//     int j = printf("%           c\n",48);
-    // printf("%d\n", j);
-	//      j = printf("%           s\n","rww");
-    // printf("%d\n", j);
-	//      j = printf("%           x\n",2);
-    // printf("%d\n", j);
-	//      j = printf("%           X\n",2);
-    // printf("%d\n", j);
-	//      j = printf("%           d\n",2);
-    // printf("%d\n", j);
-	// 	     j = printf("%           i\n",2);
-    // printf("%d\n", j);
-	//      j = printf("%           %\n",2);
-    // printf("%d\n", j);
-
-	//      j = printf("%           p\n",2);
-    // printf("%d\n", j);
-
-	
-}
 // int main ()
 // {
 // 	int i = ft_printf("%s\n", "said 1");

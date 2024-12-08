@@ -1,5 +1,5 @@
-SRC = ft_printf.c ft_putnbr_unsigned.c ft_putchar.c\
-		 ft_putstr.c ft_putnbr_baze_16.c  ft_void_hexadecimal.c ft_putnbr.c
+SRC = ft_printf.c ft_putnbr_and_x_and_u_p.c\
+		ft_putstr_and_char.c
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra

@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 13:53:29 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/11/15 22:13:33 by sechlahb         ###   ########.fr       */
+/*   Created: 2024/11/07 13:57:04 by sechlahb          #+#    #+#             */
+/*   Updated: 2024/12/08 13:23:50 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <stdint.h>
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 
-int		ft_putchar(char c);
-int		ft_putnbr(int n);
-int		ft_putstr(char *str);
-int		ft_putnbr_baze_16(unsigned int n, char c);
-int		ft_putnbr_unsigned(unsigned int n);
-int		ft_void_hexadecimal(intptr_t ptr);
+int	ft_putstr(char *str)
+{
+	int	count;
 
-#endif
+	count = 0;
+	if (!str)
+		return (ft_putstr("(null)"));
+	while (*str)
+	{
+		count += write(1, str, 1);
+		str++;
+	}
+	return (count);
+}
+
+// int main ()
+// {
+//     int i = ft_putstr("");
+//     //int i = printf("yhfdjshiwehf");
+//     printf("%d\n",i);
+// }

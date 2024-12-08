@@ -13,17 +13,17 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
 # include <stdarg.h>
 # include <stdint.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-int		ft_putchar(char c);
-int		ft_putnbr(int n);
-int		ft_putstr(char *str);
-int		ft_putnbr_baze_16(unsigned int n, char c);
-int		ft_putnbr_unsigned(unsigned int n);
-int		ft_void_hexadecimal(intptr_t ptr);
+int	ft_putchar(char c);
+int	ft_putnbr(int n);
+int	ft_putstr(char *str);
+int	ft_putnbr_baze_16(unsigned int n, char c);
+int	ft_putnbr_unsigned(unsigned int n);
+int	ft_void_hexadecimal(intptr_t ptr);
 
 #endif
