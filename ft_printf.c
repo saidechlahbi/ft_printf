@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:12:08 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/12/14 09:54:18 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/12/14 11:04:40 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,7 @@ int	ft_printf(const char *str, ...)
 // count = ft_printf("Pointer: %p\n", &x);
 // c = printf("Pointer: %p\n", &x);
 // printf("Returned count: %d, Expected count: %d\n\n", count, c);
-// count = ft_printf("Decimal: %d\n", 2147483647);
-// c = printf("Decimal: %d\n", 2147483647);
-// printf("Returned count: %d, Expected count:ff0 %d\n\n", count, c);
-// count = ft_printf("Integer: %i\n", -456);
-// c = printf("Integer: %i\n", -456);
-// printf("Returned count: %d, Expected count: %d\n\n", count, c);
-// count = ft_printf("Unsigned: %u\n", 123456789);
-// c = printf("Unsigned: %u\n", 123456789);
+// count = ft_printft_printfgned: %u\n", 123456789);
 // printf("Returned count: %d, Expected count: %d\n\n", count, c);
 // count = ft_printf("Hex (lower): %x\n", 255);
 // c = printf("Hex (lower): %x\n", 255);

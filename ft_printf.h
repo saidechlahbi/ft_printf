@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:53:29 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/12/14 09:52:12 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/12/14 11:15:12 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+int	ft_printf(const char *str, ...);
 int	ft_putchar(char c);
 int	ft_putnbr(int n);
 int	ft_putstr(char *str);

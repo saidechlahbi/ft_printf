@@ -1,6 +1,5 @@
-SRC = ft_printf.c ft_putnbr_and_x_and_u_p.c\
-		ft_putstr_and_char.c
-
+SRC = ft_putstr_and_char.c ft_putnbr_and_x_and_u_p.c ft_printf.c\
+	
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 OBJ = $(SRC:.c=.o)
