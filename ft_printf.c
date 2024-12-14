@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:12:08 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/12/08 13:47:06 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/12/14 09:54:18 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_check_and_call(const char *str, va_list p)
 		if (!s)
 			return (ft_putstr("(nil)"));
 		else
-			return (ft_putstr("0x") + ft_void_hexadecimal((intptr_t)s));
+			return (ft_putstr("0x") + ft_void_hexadecimal((unsigned long)s));
 	}
 	return (-1);
 }

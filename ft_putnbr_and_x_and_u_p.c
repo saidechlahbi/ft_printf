@@ -6,7 +6,7 @@
 /*   By: sechlahb <sechlahb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:01:19 by sechlahb          #+#    #+#             */
-/*   Updated: 2024/12/08 13:47:45 by sechlahb         ###   ########.fr       */
+/*   Updated: 2024/12/14 09:53:07 by sechlahb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_putnbr(int n)
 	return (count);
 }
 
-int	ft_void_hexadecimal(intptr_t ptr)
+int	ft_void_hexadecimal(unsigned long ptr)
 {
 	char	s;
 	char	*base1;
